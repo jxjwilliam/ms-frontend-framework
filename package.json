@@ -15,6 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBan --no-cache",
     "eject": "react-scripts eject",
     "fix": "npx eslint test/**/*.{js,jsx} --fix"
   },
@@ -39,7 +40,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
-    "eslint": "^6.6.0",
+    "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-import": "^2.22.1",
