@@ -1,17 +1,12 @@
-import React, { Fragment } from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  CssBaseline,
-  Drawer,
-  Divider,
-  IconButton,
-  Container,
-} from '@material-ui/core';
-import { ChevronLeft, ChevronRight, } from '@material-ui/icons';
-import accordion from "./Accordion1";
+import React, { Fragment } from 'react'
+import clsx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
+import { CssBaseline, Drawer, Divider, IconButton, Container } from '@material-ui/core'
+import { ChevronLeft, ChevronRight } from '@material-ui/icons'
+import accordion from './Accordion1'
 import Title from './Title'
-const drawerWidth = 240;
+
+const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -90,18 +85,19 @@ const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 240,
   },
-}));
+}))
 
 export default function (Menu, Content) {
+  // eslint-disable-next-line react/prop-types
   function Dashboard({ location: { pathname }, match: { url, path } }) {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
+    const classes = useStyles()
+    const [open, setOpen] = React.useState(true)
     const handleDrawerOpen = () => {
-      setOpen(true);
-    };
+      setOpen(true)
+    }
     const handleDrawerClose = () => {
-      setOpen(false);
-    };
+      setOpen(false)
+    }
 
     return (
       <div className={classes.root}>
@@ -117,20 +113,20 @@ export default function (Menu, Content) {
             </IconButton>
           </div>
           <Divider />
-          <Fragment>
+          <>
             <Menu />
             {open ? <accordion.ShowInfo /> : <accordion.HideInfo />}
-          </Fragment>
+          </>
         </Drawer>
         <main className={classes.content} style={{ position: 'relative' }}>
-          {/*<div className={classes.appBarSpacer}/>*/}
+          {/* <div className={classes.appBarSpacer}/> */}
           <Container maxWidth="lg" className={classes.container}>
             <Title path={pathname} />
             <Content />
           </Container>
         </main>
       </div>
-    );
+    )
   }
-  return Dashboard;
+  return Dashboard
 }

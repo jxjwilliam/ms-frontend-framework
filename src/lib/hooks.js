@@ -2,18 +2,19 @@ import { useState, useEffect, useReducer } from 'react'
 
 const useRef = useState({ current: initialValue })[0]
 
-export function useFetch(uri) {
+export function useFetch(url) {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
   const [error] = useState()
 
   useEffect(() => {
-    if (!uri) return
-    fetch(uri)
-      .then(data => data.json())
+    if (!url) return
+    fetch(url)
+      .then(result => result.json())
       .then(setData)
       .then(() => setLoading(false))
-  }, [uri])
+      .catch(console.log)
+  }, [url])
 
   return {
     data,

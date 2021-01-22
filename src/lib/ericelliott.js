@@ -31,14 +31,7 @@ export const addChat = ({
   payload: { id, msg, user, timeStamp },
 })
 
-const initialState = 0
-const reducer = (state = initialState, data) => state + data
-const total = [0, 1, 2, 3].reduce(reducer)
-console.log(total)
-
 export const getViewState = state => ({
   ...state, // return a list of users active during this session
   recentlyActiveUsers: [...new Set(state.chatLog.map(chat => chat.user))],
 })
-
-const curry = (f, arr = []) => (...args) => (a => (a.length >= f.length ? f(...a) : curry(f, a)))([...arr, ...args])

@@ -28,7 +28,6 @@ const wraDispatchWithMiddlewares = (store, middlewares) => {
   middlewares
     .slice()
     .reverse()
-    // eslint-disable-next-line no-return-assign
     .forEach(middleware => (store.dispatch = middleware(store)(store.dispatch)))
 }
 
@@ -55,6 +54,7 @@ export function applyMiddleware(middleware) {
 
     const midApi = {
       getState: store.getState,
+      // eslint-disable-next-line no-shadow
       dispatch: (...args) => dispatch(...args), // Native dispatch
     }
     dispatch = middleware(midApi)(store.dispatch) // Note that when the dispatch is rewritten, the native dispatch is also saved and transferred to the middleware.
