@@ -1,7 +1,7 @@
 import './App.css'
 import Algolia from './components/algolia'
 import GihubJobs from './components/github'
-import LoadComponent from './components/LoadContent'
+import LoadComponent from './components/loadContent'
 
 function App() {
   return (

@@ -11,6 +11,7 @@
 # production
 /build
 /todos
+/src/lib
 
 # misc
 .DS_Store
