@@ -13,6 +13,11 @@
   color: white;
 }
 
+.App-nav {
+  font-size: medium;
+  color: whitesmoke;
+}
+
 .App-link {
   color: #61dafb;
 }

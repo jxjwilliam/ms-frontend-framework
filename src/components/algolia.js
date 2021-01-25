@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { FaBeer } from 'react-icons/fa'
 
 const URL = 'https://hn.algolia.com/api/v1/search'
 
@@ -46,6 +47,9 @@ function Algolia() {
 
   return (
     <>
+      <h3>
+        Cheers with <FaBeer />
+      </h3>
       <form onSubmit={handleSubmit}>
         <input type="text" value={query} onChange={handleChange} />
         <button type="submit">Search</button>
