@@ -1,5 +1,7 @@
 import './App.css'
 import Algolia from './components/algolia'
+import GihubJobs from './components/github'
+import LoadComponent from './components/LoadContent'
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
         </a>
       </header>
       <main>
-        <Algolia />
+        {/* <Algolia /> */}
+        {/* <GihubJobs /> */}
+        <LoadComponent />
       </main>
     </div>
   )

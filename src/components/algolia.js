@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const BASEURL = 'https://hn.algolia.com/api/v1/search'
+const URL = 'https://hn.algolia.com/api/v1/search'
 
 // https://codesandbox.io/s/jvvkoo8pq3
 const useDataApi = (initialUrl, initialData) => {
@@ -22,6 +22,7 @@ const useDataApi = (initialUrl, initialData) => {
       }
       setIsLoading(false)
     }
+
     fetchData()
   }, [url])
 
@@ -30,7 +31,7 @@ const useDataApi = (initialUrl, initialData) => {
 
 function Algolia() {
   const [query, setQuery] = useState('redux')
-  const [{ data, isLoading, isError }, doFetch] = useDataApi(`${BASEURL}?query=redux`, {
+  const [{ data, isLoading, isError }, doFetch] = useDataApi(`${URL}?query=redux`, {
     hits: [],
   })
 
@@ -39,7 +40,7 @@ function Algolia() {
   }
 
   const handleSubmit = event => {
-    doFetch(`${BASEURL}?query=${query}`)
+    doFetch(`${URL}?query=${query}`)
     event.preventDefault()
   }
 
