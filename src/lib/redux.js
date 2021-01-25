@@ -99,8 +99,6 @@ function connect(mapState, mapDispatch) {
   }
 }
 
-/// ////////////
-
 const configureStore = () => {
   const loadState = () => LocalStorage.getItem('redux')
   const saveState = state => LocalStorage.setItem('redux', state)

@@ -39,7 +39,7 @@ class ComplexList extends Component {
     return (
       <div>
         <div className="header">{renderHeader(this.props)}</div>
-        <div className="footer">{data.map(item => renderListItem(item))}</div>
+        <div className="main">{data.map(item => renderListItem(item))}</div>
         <div className="footer">{children}</div>
       </div>
     )

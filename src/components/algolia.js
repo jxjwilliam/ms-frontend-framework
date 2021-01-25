@@ -1,4 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+
+const BASEURL = 'https://hn.algolia.com/api/v1/search'
 
 // https://codesandbox.io/s/jvvkoo8pq3
 const useDataApi = (initialUrl, initialData) => {
@@ -26,22 +28,25 @@ const useDataApi = (initialUrl, initialData) => {
   return [{ data, isLoading, isError }, setUrl]
 }
 
-function App() {
+function Algolia() {
   const [query, setQuery] = useState('redux')
-  const [{ data, isLoading, isError }, doFetch] = useDataApi('https://hn.algolia.com/api/v1/search?query=redux', {
+  const [{ data, isLoading, isError }, doFetch] = useDataApi(`${BASEURL}?query=redux`, {
     hits: [],
   })
 
+  const handleChange = event => {
+    setQuery(event.target.value)
+  }
+
+  const handleSubmit = event => {
+    doFetch(`${BASEURL}?query=${query}`)
+    event.preventDefault()
+  }
+
   return (
     <>
-      <form
-        onSubmit={event => {
-          doFetch(`http://hn.algolia.com/api/v1/search?query=${query}`)
-
-          event.preventDefault()
-        }}
-      >
-        <input type="text" value={query} onChange={event => setQuery(event.target.value)} />
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={query} onChange={handleChange} />
         <button type="submit">Search</button>
       </form>
 
@@ -51,9 +56,11 @@ function App() {
         <div>Loading ...</div>
       ) : (
         <ul>
-          {data.hits.map(item => (
-            <li key={item.objectID}>
-              <a href={item.url}>{item.title}</a>
+          {data.hits.map(({ objectID, url, title }) => (
+            <li key={objectID}>
+              <a className="App-link" href={url}>
+                {title}
+              </a>
             </li>
           ))}
         </ul>
@@ -62,4 +69,4 @@ function App() {
   )
 }
 
-export default App
+export default Algolia

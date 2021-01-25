@@ -1,4 +1,5 @@
 import './App.css'
+import Algolia from './components/algolia'
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <main>
+        <Algolia />
+      </main>
     </div>
   )
 }

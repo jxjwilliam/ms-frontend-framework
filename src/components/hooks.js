@@ -1,8 +1,6 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect } from 'react'
 
-const useRef = useState({ current: initialValue })[0]
-
-export function useFetch(url) {
+function useFetch(url) {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
   const [error] = useState()

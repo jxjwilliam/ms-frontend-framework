@@ -44,8 +44,6 @@ const configureStore = () => {
 
 //  function = store => store.dispatch => action
 
-/// ////////////////////////
-
 export function applyMiddleware(middleware) {
   //
   return createStore => (...args) => {
