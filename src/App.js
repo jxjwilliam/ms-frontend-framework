@@ -28,7 +28,7 @@ function Navbars() {
       <StyledLink to="/about">About Us</StyledLink>
       <StyledLink to="/contact">Contact Us</StyledLink>
       <StyledLink to="/algolia">Algolia</StyledLink>
-      <StyledLink to="/newsapi">NewsApi</StyledLink>
+      <StyledLink to="/newsapi">News Api</StyledLink>
     </div>
   )
 }

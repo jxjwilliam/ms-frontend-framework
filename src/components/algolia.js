@@ -3,6 +3,7 @@ import { FaBeer } from 'react-icons/fa'
 
 const URL = 'https://hn.algolia.com/api/v1/search'
 
+// https://www.robinwieruch.de/react-hooks-fetch-data
 // https://codesandbox.io/s/jvvkoo8pq3
 const useDataApi = (initialUrl, initialData) => {
   const [data, setData] = useState(initialData)
@@ -11,20 +12,25 @@ const useDataApi = (initialUrl, initialData) => {
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
+    let ignore = false
+
     const fetchData = async () => {
       setIsError(false)
       setIsLoading(true)
       try {
         const result = await fetch(url)
-        const data1 = await result.json()
-        setData(data1)
+        const json = await result.json()
+        if (!ignore) setData(json)
       } catch (error) {
         setIsError(true)
       }
       setIsLoading(false)
     }
-
     fetchData()
+
+    return function cleanup() {
+      ignore = true
+    }
   }, [url])
 
   return [{ data, isLoading, isError }, setUrl]
