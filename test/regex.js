@@ -4,7 +4,7 @@ describe('RegExp', () => {
   it('regexp', () => {
     const x = 'keyword'
     const rx = new RegExp(x, 'i')
-    const ary1 = ['what ever the Keyword is', 'keyword: regex', 'Keywords: incauragtion']
+    const ary1 = ['what Keyword is', 'keyword: regex', 'Keywords: incauragtion']
     const ary2 = ['kayword', 'key words']
 
     const yes = ary1.some(e => rx.test(e))

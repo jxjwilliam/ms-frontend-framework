@@ -1,9 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable max-classes-per-file */
 import React, { Component } from 'react'
+import dayjs from 'dayjs'
 
+const today = dayjs().format('YYYY-MM-DD')
 const APIkey = '385ab8a7f7d94d8ab652bba886b440e3'
-const URL = `http://newsapi.org/v2/everything?q=bitcoin&from=2020-12-25&sortBy=publishedAt&apiKey=${APIkey}`
+const URL = `http://newsapi.org/v2/everything?q=tesla&from=${today}&sortBy=publishedAt&apiKey=${APIkey}`
+// .../everything?q=tesla&from=2020-12-26&sortBy=publishedAt&apiKey=385ab8a7f7d94d8ab652bba886b440e3
 
 // https://codedaily.io/tutorials/6/Using-Functions-as-Children-and-Render-Props-in-React-Components
 class LoadContent extends Component {
@@ -60,14 +61,13 @@ const renderListItem = ({ author, publishedAt, title, url }) => (
   </div>
 )
 
-export default function LoadComponent() {
+export default function NewsApi() {
   return (
     <LoadContent url={`${URL}`}>
       {({ loading, error, total, list, ...props }) => {
         if (loading) return <span>Loading...</span>
         if (error) return <span>Error loading</span>
 
-        console.log('----', total, list)
         return (
           <ComplexList
             data={list}

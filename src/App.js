@@ -1,36 +1,15 @@
-import './App.css'
 import { Switch, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { SiAircanada } from 'react-icons/si'
-import { Home, About, Algolia, GihubJobs, LoadComponent, Error } from './components'
-
-function navbars() {
-  return (
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/about">About Us </Link>
-      <Link to="/menu1">Menu1</Link>
-      <Link to="/menu2">Menu2</Link>
-      <Link to="/menu3">Menu3</Link>
-    </div>
-  )
-}
-
-function routers() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/about" component={About} />
-      <Route path="/menu1" component={Algolia} />
-      <Route path="/menu2" component={GihubJobs} />
-      <Route path="/menu3" component={LoadComponent} />
-      <Route component={Error} />
-    </Switch>
-  )
-}
+import { Home, About, Contact, Algolia, NewsApi, Error } from './components'
+import './App.css'
 
 const StyledLink = styled(Link)`
+  display: inline-block;
+  color: white;
+  padding: 6px 20px 6px 20px;
+  background: transparent;
   text-decoration: none;
 
   &:focus,
@@ -42,6 +21,31 @@ const StyledLink = styled(Link)`
   }
 `
 
+function Navbars() {
+  return (
+    <div>
+      <StyledLink to="/">Home</StyledLink>
+      <StyledLink to="/about">About Us</StyledLink>
+      <StyledLink to="/contact">Contact Us</StyledLink>
+      <StyledLink to="/algolia">Algolia</StyledLink>
+      <StyledLink to="/newsapi">NewsApi</StyledLink>
+    </div>
+  )
+}
+
+function Routers() {
+  return (
+    <Switch>
+      <Route path="/" component={Home} exact />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/algolia" component={Algolia} />
+      <Route path="/newsapi" component={NewsApi} />
+      <Route component={Error} />
+    </Switch>
+  )
+}
+
 function App() {
   return (
     <>
@@ -51,11 +55,13 @@ function App() {
           <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
             Learn React <SiAircanada />
           </a>
-          <StyledLink>
-            <nav className="App-nav">{navbars()}</nav>
-          </StyledLink>
+          <nav className="App-nav">
+            <Navbars />
+          </nav>
         </header>
-        <main>{routers()}</main>
+        <main>
+          <Routers />
+        </main>
       </div>
     </>
   )

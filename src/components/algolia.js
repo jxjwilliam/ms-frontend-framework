@@ -30,7 +30,7 @@ const useDataApi = (initialUrl, initialData) => {
   return [{ data, isLoading, isError }, setUrl]
 }
 
-function Algolia() {
+export default function Algolia() {
   const [query, setQuery] = useState('redux')
   const [{ data, isLoading, isError }, doFetch] = useDataApi(`${URL}?query=redux`, {
     hits: [],
@@ -73,5 +73,3 @@ function Algolia() {
     </>
   )
 }
-
-export default Algolia

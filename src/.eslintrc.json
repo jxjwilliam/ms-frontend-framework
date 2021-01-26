@@ -3,5 +3,8 @@
     "jest/globals": true
   },
   "extends": ["plugin:jest/recommended"],
-  "rules": {}
+  "rules": {
+    "react/prop-types": 0,
+    "max-classes-per-file": 0
+  }
 }

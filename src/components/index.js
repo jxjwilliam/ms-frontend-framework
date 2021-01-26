@@ -1,8 +1,8 @@
 import Home from './home'
 import About from './about'
+import Contact from './contact'
 import Algolia from './algolia'
-import GihubJobs from './github'
-import LoadComponent from './loadContent'
+import NewsApi from './newsapi'
 import Error from './error'
 
-export { Home, About, Algolia, GihubJobs, LoadComponent, Error }
+export { Home, About, Contact, Algolia, NewsApi, Error }

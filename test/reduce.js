@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 
 describe('misc', () => {
-  it('name in names', () => {
+  it('{} calculation', () => {
     const names = ['Alice', 'Bob', 'Bruce', 'Alice']
     const expected = {
       Alice: 2,
