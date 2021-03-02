@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "fix": "eslint test/**/*.{js,jsx} --fix",
     "test1": "mocha --watch --recursive",
-    "test2": "mocha"
+    "test2": "mocha --watch test/reduce.js"
   },
   "eslintConfig": {
     "extends": [
