@@ -52,18 +52,6 @@ const todoReducer = (state, action) => {
   }
 }
 
-const filterReducer1 = (state, action) => {
-  switch (action.type) {
-    case 'SHOW_ALL':
-      return state
-    case 'SHOW_COMPLETE':
-      return state.filter(todo => todo.complete)
-    case 'SHOW_INCOMPLETE':
-      return state.filter(todo => !todo.complete)
-    default:
-      throw new Error()
-  }
-}
 const filterReducer = (state, action) => {
   switch (action.type) {
     case 'SHOW_ALL':
@@ -140,6 +128,7 @@ function AddTodo() {
   const dispatch = useContext(TodoContext)
 
   const [task, setTask] = useState('')
+  const ref = useRef(null)
 
   const handleChange = evt => setTask(evt.target.value)
 
@@ -148,12 +137,13 @@ function AddTodo() {
       dispatch({ type: 'ADD_TODO', task, id: uuid() })
     }
     setTask('')
+    ref.current.focus()
     event.preventDefault()
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={task} onChange={handleChange} />
+      <input type="text" value={task} onChange={handleChange} ref={ref} />
       <button type="submit">Add Todo</button>
     </form>
   )
