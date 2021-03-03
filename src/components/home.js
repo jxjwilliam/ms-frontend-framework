@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useFetch, MyReducer, MyRef } from '../react-use'
-import MyTheme, { themes, ThemeContext } from '../react-use/use-context-theme'
+import { useFetch } from '../react-use'
+import MyTheme, { themes, ThemeContext } from '../react-use/context-theme'
 
 export default function () {
   const [theme, setTheme] = useState(themes.light)
@@ -26,8 +26,6 @@ export default function () {
       </div>
       <div style={{ display: 'block' }}>
         <MyTheme />
-        <MyReducer />
-        <MyRef />
       </div>
     </ThemeContext.Provider>
   )

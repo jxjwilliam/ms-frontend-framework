@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Todo from '../react-use/use-reducer'
 
 // Theme context, default to light theme
 const ThemeContext = React.createContext('light')
@@ -8,7 +9,7 @@ const UserContext = React.createContext({
   name: 'Guest',
 })
 
-class Home1 extends React.Component {
+export default class Home1 extends React.Component {
   render() {
     const { signedInUser, theme } = this.props
 
@@ -17,6 +18,7 @@ class Home1 extends React.Component {
       <ThemeContext.Provider value={theme}>
         <UserContext.Provider value={signedInUser}>
           <Content />
+          <Todo />
         </UserContext.Provider>
       </ThemeContext.Provider>
     )
@@ -33,17 +35,11 @@ function Content() {
   console.log(theme2)
   console.groupEnd()
 
-  return <ProfilePage user={theme2} theme={theme1} />
-}
-
-function ProfilePage({ user, theme }) {
   return (
     <>
       <h2>multiple context</h2>
-      <div>user: {user.name}</div>
-      <div>theme: {theme}</div>
+      <div>user: {theme2.name}</div>
+      <div>theme: {theme1}</div>
     </>
   )
 }
-
-export default Home1
