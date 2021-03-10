@@ -8,7 +8,7 @@ test('renders learn react link', () => {
       <App />
     </BrowserRouter>,
   )
-  const linkElement = screen.getByText(/learn react/i)
+  const linkElement = screen.getByText(/React Frontend App/i)
   expect(linkElement).toBeInTheDocument()
 })
 

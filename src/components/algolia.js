@@ -26,9 +26,10 @@ const useDataApi = (initialUrl, initialData) => {
       }
       setIsLoading(false)
     }
+
     fetchData()
 
-    return function cleanup() {
+    return () => {
       ignore = true
     }
   }, [url])

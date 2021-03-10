@@ -1,45 +1,43 @@
-import React, { useContext } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import Todo from '../react-use/use-reducer'
 
-// Theme context, default to light theme
-const ThemeContext = React.createContext('light')
+export default () => (
+  <>
+    <Counter />
+    <Todo />
+  </>
+)
 
-// Signed-in user context
-const UserContext = React.createContext({
-  name: 'Guest',
-})
+const ButtonPair = React.memo(({ onIncrement, onDecrement }) => (
+  <>
+    <button type="button" onClick={onIncrement}>
+      Increment Counter
+    </button>
+    <button type="button" onClick={onDecrement}>
+      Decrement Counter
+    </button>
+  </>
+))
 
-export default class Home1 extends React.Component {
-  render() {
-    const { signedInUser, theme } = this.props
+function Counter() {
+  const [counter, setCounter] = useState(0)
+  const incrementCounter = useCallback(() => setCounter(counter + 1), [counter])
+  const decrementCounter = useCallback(() => setCounter(counter - 1), [counter])
 
-    // App component that provides initial context values
-    return (
-      <ThemeContext.Provider value={theme}>
-        <UserContext.Provider value={signedInUser}>
-          <Content />
-          <Todo />
-        </UserContext.Provider>
-      </ThemeContext.Provider>
-    )
+  const inputEl = useRef(null)
+  const [value, setValue] = useState(0)
+  const handleChange = evt => {
+    // evt.target.value === inputEl.current.value
+    setValue(evt.target.value)
+    // eslint-disable-next-line radix
+    setCounter(parseInt(inputEl.current.value))
   }
-}
-
-// A component may consume multiple contexts
-function Content() {
-  const theme1 = useContext(ThemeContext)
-  const theme2 = useContext(UserContext)
-
-  console.group('useContext')
-  console.log(theme1)
-  console.log(theme2)
-  console.groupEnd()
 
   return (
-    <>
-      <h2>multiple context</h2>
-      <div>user: {theme2.name}</div>
-      <div>theme: {theme1}</div>
-    </>
+    <div>
+      <h2>{counter}</h2>
+      <ButtonPair onIncrement={incrementCounter} onDecrement={decrementCounter} />
+      <input ref={inputEl} type="number" onChange={handleChange} value={value} />
+    </div>
   )
 }

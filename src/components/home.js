@@ -1,32 +1,62 @@
-import React, { useState } from 'react'
-import { useFetch } from '../react-use'
-import MyTheme, { themes, ThemeContext } from '../react-use/context-theme'
+import React from 'react'
+import styled from 'styled-components'
+import { useFetch, MyTheme, ThemeContext, themes } from '../react-use'
+
+const Button = styled('button')`
+  margin: 2rem;
+  padding: 2rem;
+  color: white;
+  background: rebeccapurple;
+`
+
+const Ul = styled('ul')`
+  margin: 2rem 0;
+`
+const Li = styled('li')`
+  list-style: none;
+  line-height: 2;
+`
 
 export default function () {
-  const [theme, setTheme] = useState(themes.light)
+  return (
+    <MyTheme>
+      <ShowData />
+      <ThemeSwitch />
+    </MyTheme>
+  )
+}
+
+function ShowData() {
   const { loading, error, data = [] } = useFetch('https://hn.algolia.com/api/v1/search?query=react')
 
   if (error) return <p>Error!</p>
   if (loading) return <p>Loading...</p>
 
-  const toggleTheme = () => {
-    setTheme(theme === themes.light ? themes.dark : themes.light)
-  }
+  const [themeName] = React.useContext(ThemeContext)
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div style={{ backgroundColor: theme.background }}>
-        <ul>
-          {data?.hits?.map(item => (
-            <li key={item.objectID}>
-              <a href={item.url}>{item.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div style={{ display: 'block' }}>
-        <MyTheme />
-      </div>
-    </ThemeContext.Provider>
+    <div style={{ backgroundColor: themes[themeName].background }}>
+      <Ul>
+        {data?.hits?.map(item => (
+          <Li key={item.objectID}>
+            <a href={item.url}>{item.title}</a>
+          </Li>
+        ))}
+      </Ul>
+    </div>
+  )
+}
+
+function ThemeSwitch() {
+  const [themeName, setThemeName] = React.useContext(ThemeContext)
+  const toggleTheme = () => {
+    setThemeName(themeName === 'light' ? 'dark' : 'light')
+  }
+  return (
+    <div>
+      <Button type="button" value={themeName} onClick={toggleTheme}>
+        Toggle Theme ({themeName})
+      </Button>
+    </div>
   )
 }

@@ -64,7 +64,7 @@ const renderListItem = ({ author, publishedAt, title, url }) => (
 export default function NewsApi() {
   return (
     <LoadContent url={`${URL}`}>
-      {({ loading, error, total, list, ...props }) => {
+      {({ loading, error, total, list }) => {
         if (loading) return <span>Loading...</span>
         if (error) return <span>Error loading</span>
 

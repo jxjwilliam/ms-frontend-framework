@@ -2,7 +2,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { SiAircanada } from 'react-icons/si'
-import { Home, Home1, Algolia, NewsApi, Error } from './components'
+import { Home, Home1, Algolia, NewsApi } from './components'
 import './App.css'
 
 const StyledLink = styled(Link)`
@@ -41,7 +41,7 @@ function Routers() {
       <Route path="/multi-context">
         <Home1 signedInUser={{ name: 'williamjxj' }} theme="originIsBlack" />
       </Route>
-      <Route component={Error} />
+      <Route render={() => <h1>Error</h1>} />
     </Switch>
   )
 }
@@ -49,11 +49,11 @@ function Routers() {
 function App() {
   return (
     <>
-      <Helmet title="ms frontend framework" />
+      <Helmet title="Ms-frontend framework" />
       <div className="App">
         <header className="App-header">
           <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React <SiAircanada fill="red" size="2rem" />
+            React Frontend App <SiAircanada fill="red" size="2rem" />
           </a>
           <nav className="App-nav">
             <Navbars />
