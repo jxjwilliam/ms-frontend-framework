@@ -49,3 +49,10 @@ More:
 - useHooks
 - Apollo GraphQL
 - microservice framework
+
+### Pages
+
+- theme, context, algolia-api
+- algolia-api search
+- news-api
+- todo (form/list/filter)

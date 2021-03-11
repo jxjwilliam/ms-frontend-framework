@@ -1,27 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useFetch, MyTheme, ThemeContext, themes } from '../react-use'
-
-const Button = styled('button')`
-  margin: 2rem;
-  padding: 2rem;
-  color: white;
-  background: rebeccapurple;
-`
-
-const Ul = styled('ul')`
-  margin: 2rem 0;
-`
-const Li = styled('li')`
-  list-style: none;
-  line-height: 2;
-`
 
 export default function () {
   return (
     <MyTheme>
-      <ShowData />
-      <ThemeSwitch />
+      <div className="grid2">
+        <ShowData />
+        <ThemeSwitch />
+      </div>
     </MyTheme>
   )
 }
@@ -36,13 +22,13 @@ function ShowData() {
 
   return (
     <div style={{ backgroundColor: themes[themeName].background }}>
-      <Ul>
+      <ul>
         {data?.hits?.map(item => (
-          <Li key={item.objectID}>
+          <li key={item.objectID}>
             <a href={item.url}>{item.title}</a>
-          </Li>
+          </li>
         ))}
-      </Ul>
+      </ul>
     </div>
   )
 }
@@ -54,9 +40,9 @@ function ThemeSwitch() {
   }
   return (
     <div>
-      <Button type="button" value={themeName} onClick={toggleTheme}>
+      <button type="button" value={themeName} onClick={toggleTheme}>
         Toggle Theme ({themeName})
-      </Button>
+      </button>
     </div>
   )
 }

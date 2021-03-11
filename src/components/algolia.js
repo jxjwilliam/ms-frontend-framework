@@ -53,8 +53,8 @@ export default function Algolia() {
   }
 
   return (
-    <>
-      <h3>
+    <div className="container">
+      <h3 style={{ marginTop: 0 }}>
         Cheers with <FaBeer />
       </h3>
       <form onSubmit={handleSubmit}>
@@ -67,7 +67,7 @@ export default function Algolia() {
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <ul>
+        <ul className="ul">
           {data.hits.map(({ objectID, url, title }) => (
             <li key={objectID}>
               <a className="App-link" href={url}>
@@ -77,6 +77,6 @@ export default function Algolia() {
           ))}
         </ul>
       )}
-    </>
+    </div>
   )
 }

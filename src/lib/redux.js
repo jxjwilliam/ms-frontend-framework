@@ -104,12 +104,12 @@ const configureStore = () => {
   const saveState = state => LocalStorage.setItem('redux', state)
 
   const persistedState = loadState()
-  const store = createStore({ todoApp, persistedState })
+  const myStore = createStore({ todoApp, persistedState })
 
-  store.subscribe(
+  myStore.subscribe(
     throttle(() => {
       saveState({ todos: store.getState().todos })
     }, 1000),
   )
-  return store
+  return myStore
 }

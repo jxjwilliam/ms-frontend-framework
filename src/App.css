@@ -33,13 +33,34 @@
   }
 }
 
-main {
-  /* display: flex;
-  align-items: center; */
+.wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  background-color: rgb(245, 242, 225);
+  padding-left: 2rem;
+}
+
+.container {
+  padding-bottom: 1rem;
+  background-color: seashell;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container .ul {
+  text-align: start;
+  margin-left: 3rem;
+  line-height: 1.5rem;
+}
+
+ul {
+  margin: 0;
 }
 
 ul li {
   list-style: none;
+  line-height: 2;
 }
 
 ul li a {
@@ -48,4 +69,12 @@ ul li a {
 
 ul li a:hover {
   text-decoration: none;
+}
+
+button[type='button'] {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 1.5rem;
+  /* border-radius: 90%; */
+  margin: 1rem;
 }

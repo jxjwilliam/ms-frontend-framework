@@ -63,21 +63,23 @@ const renderListItem = ({ author, publishedAt, title, url }) => (
 
 export default function NewsApi() {
   return (
-    <LoadContent url={`${URL}`}>
-      {({ loading, error, total, list }) => {
-        if (loading) return <span>Loading...</span>
-        if (error) return <span>Error loading</span>
+    <div className="wrapper">
+      <LoadContent url={`${URL}`}>
+        {({ loading, error, total, list }) => {
+          if (loading) return <span>Loading...</span>
+          if (error) return <span>Error loading</span>
 
-        return (
-          <ComplexList
-            data={list}
-            renderHeader={() => <span>{loading ? 'Loading...' : 'Header Content'}</span>}
-            renderListItem={renderListItem}
-          >
-            We have {total} items
-          </ComplexList>
-        )
-      }}
-    </LoadContent>
+          return (
+            <ComplexList
+              data={list}
+              renderHeader={() => <span>{loading ? 'Loading...' : 'Header Content'}</span>}
+              renderListItem={renderListItem}
+            >
+              We have {total} items
+            </ComplexList>
+          )
+        }}
+      </LoadContent>
+    </div>
   )
 }

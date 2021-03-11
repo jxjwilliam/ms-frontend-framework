@@ -1,6 +1,7 @@
 import Home from './home'
-import Home1 from './home1'
+import Todo from './todo'
 import Algolia from './algolia'
 import NewsApi from './newsapi'
+import Clock from './clock'
 
-export { Home, Home1, Algolia, NewsApi }
+export { Home, Todo, Algolia, NewsApi, Clock }

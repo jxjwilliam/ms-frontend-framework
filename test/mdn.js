@@ -44,9 +44,6 @@ describe('mdn', () => {
   context('iterator', () => {
     it('should for...of, for...in, forEach work', () => {
       const obj = { a: 'somestring', b: 42 }
-      // for (const [key, value] of Object.entries(obj)) {}
-      // for (const property in obj) { }
-      // Object.entries(obj).forEach(([key, value]) => { })
       const map = new Map(Object.entries(obj))
       expect([...map]).to.eql([
         ['a', 'somestring'],
@@ -54,8 +51,6 @@ describe('mdn', () => {
       ])
     })
   })
-
-  // TODO: for await (variable of iterable) { statement }
 
   context('spread destructive', () => {
     function foo(...args) {
