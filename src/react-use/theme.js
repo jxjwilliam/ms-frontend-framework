@@ -2,11 +2,11 @@ import React from 'react'
 
 export const themes = {
   light: {
-    foreground: '#000000',
+    foreground: 'rebeccapurple',
     background: '#eeeeee',
   },
   dark: {
-    foreground: '#ffffff',
+    foreground: 'white',
     background: '#222222',
   },
 }
@@ -23,6 +23,8 @@ export const ThemeContext = React.createContext(null)
  */
 export default function ({ children }) {
   const [themeName, setThemeName] = React.useState('light')
-
-  return <ThemeContext.Provider value={[themeName, setThemeName]}>{children}</ThemeContext.Provider>
+  const toggleTheme = () => {
+    setThemeName(themeName === 'light' ? 'dark' : 'light')
+  }
+  return <ThemeContext.Provider value={[themeName, toggleTheme]}>{children}</ThemeContext.Provider>
 }

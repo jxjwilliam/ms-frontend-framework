@@ -2,7 +2,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { SiAircanada } from 'react-icons/si'
-import { Home, Todo, Algolia, NewsApi, Clock } from './components'
+import { Home, Todo, Algolia, NewsApi, Clock, Counter } from './components'
 import './App.css'
 
 const StyledLink = styled(Link)`
@@ -29,6 +29,7 @@ function Navbars() {
       <StyledLink to="/newsapi">News Api</StyledLink>
       <StyledLink to="/todo">Todo</StyledLink>
       <StyledLink to="/clock">Clock</StyledLink>
+      <StyledLink to="/count">Counter</StyledLink>
     </div>
   )
 }
@@ -43,6 +44,7 @@ function Routers() {
         <Todo signedInUser={{ name: 'williamjxj' }} theme="originIsBlack" />
       </Route>
       <Route path="/clock" component={Clock} />
+      <Route path="/count" component={Counter} />
       <Route render={() => <h1>Error</h1>} />
     </Switch>
   )

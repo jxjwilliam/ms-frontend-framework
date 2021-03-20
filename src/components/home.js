@@ -25,7 +25,9 @@ function ShowData() {
       <ul>
         {data?.hits?.map(item => (
           <li key={item.objectID}>
-            <a href={item.url}>{item.title}</a>
+            <a href={item.url} style={{ color: themes[themeName].foreground }}>
+              {item.title}
+            </a>
           </li>
         ))}
       </ul>
@@ -34,10 +36,8 @@ function ShowData() {
 }
 
 function ThemeSwitch() {
-  const [themeName, setThemeName] = React.useContext(ThemeContext)
-  const toggleTheme = () => {
-    setThemeName(themeName === 'light' ? 'dark' : 'light')
-  }
+  const [themeName, toggleTheme] = React.useContext(ThemeContext)
+
   return (
     <div>
       <button type="button" value={themeName} onClick={toggleTheme}>
